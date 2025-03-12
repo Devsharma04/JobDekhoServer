@@ -24,7 +24,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: "http://job-portal-new-env.eba-m69xrvjr.ap-south-1.elasticbeanstalk.com",
+    origin: "https://jobdekhoserver.onrender.com",
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
   })
@@ -34,7 +34,7 @@ app.use(express.json({ limit: "100kb" }));
 app.use(express.urlencoded({ extended: true }));
 
 app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "https://mern-job-portal-tx6o.vercel.app"); // Allow requests from this origin
+  res.setHeader("Access-Control-Allow-Origin", "https://jobdekho-dusky.vercel.app/"); // Allow requests from this origin
   res.setHeader("Access-Control-Allow-Headers", "Authorization, Content-Type"); // Allow these headers in requests
   res.setHeader("Access-Control-Expose-Headers", "Authorization"); // Expose these headers in responses
   next(); // Pass control to the next middleware
