@@ -24,7 +24,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: "https://jobdekhoserver.onrender.com",
+    origin: "https://jobdekho-dusky.vercel.app/",
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
   })
