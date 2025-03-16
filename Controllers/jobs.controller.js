@@ -41,17 +41,19 @@ const deleteJob = async (req, res) => {
   const { jobId } = req.params;
   const { id } = req.user;
   const job = await Job.findByIdAndDelete(jobId);
-
+  if (!job) {
+    res.status(404).json({ message: "job not found" });
+    throw new customError(404, "job not found");
+  }
   await User.findByIdAndUpdate(
     id,
     { $pull: { jobsCreated: jobId } },
     { new: true }
   );
-
-  if (!job) {
-    res.status(404).json({ message: "job not found" });
-    throw new customError(404, "job not found");
-  }
+  await User.updateMany(
+    { appliedJobs: jobId },
+    { $pull: { appliedJobs: jobId } }
+  );
 
   res.status(200).json({ message: "job deleted successfully" });
 };
