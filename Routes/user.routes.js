@@ -27,6 +27,7 @@ export const routes = express.Router();
 const upload = multer({ storage, limits: { fileSize: 3 * 1024 * 1024 } });
 //api endpoints for users===================
 
+routes.get("/", (req,res)=> res.send("server responded"));
 routes.post("/signup", asyncHandler(userSignup));
 routes.get(
   "/mail-verification/:id/:emailtoken",
