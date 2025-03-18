@@ -48,7 +48,7 @@ const userSignup = async (req, res) => {
     "Email Verification",
     mailverfytemp.replace(
       "{Link}",
-      `http://localhost:3000/api/mail-verification/${id}/${mailtoken}`
+      `https://jobdekhoserver.onrender.com/api/mail-verification/${id}/${mailtoken}`
     )
   );
 
@@ -74,9 +74,9 @@ const userMailVerification = async (req, res) => {
     user.emailToken = undefined;
     await user.save();
     //redirect to login page
-    res.redirect("http://localhost:5173/api/mail-verified-successfully");
+    res.redirect("https://jobdekho-dusky.vercel.app/api/mail-verified-successfully");
   } else {
-    res.redirect("http://localhost:5173/api/mail-verification-failed");
+    res.redirect("https://jobdekho-dusky.vercel.app/api/mail-verification-failed");
     throw new customError(400, "mail verification failed");
   }
 };
